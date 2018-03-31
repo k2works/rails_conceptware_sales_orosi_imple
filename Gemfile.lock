@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/k2works/etude_for_ops.git
-  revision: 60b8ed559b2bfcf0a4fd7e8364941bba9e8346c7
+  revision: b0f3ecc071181baa3f075fe9bd5cf3ffd679f574
   branch: develop
   specs:
     etude_for_ops (0.2.0)
