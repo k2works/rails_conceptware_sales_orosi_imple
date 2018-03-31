@@ -896,87 +896,6 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "AMURIARARI", comment: "期間粗利額"
   end
 
-  create_table "ZT010", primary_key: "IDVARIANT", id: :string, limit: 20, comment: "変数ＩＤ", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "TXNAME", limit: 10, null: false, comment: "変数名"
-    t.string "TXTYPE", limit: 10, null: false, comment: "変数値タイプ"
-    t.string "TXVALUE", limit: 100, null: false, comment: "変数値"
-    t.string "TXREMARKS", limit: 300, comment: "摘要"
-  end
-
-  create_table "ZT020", primary_key: "IDUSER", id: :string, limit: 5, comment: "ユーザＩＤ", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "TXNAME", limit: 30, null: false, comment: "漢字名"
-    t.string "TXPASSWORD", limit: 50, null: false, comment: "パスワード"
-    t.date "DTVALID", null: false, comment: "発効日"
-    t.date "DTEXPIRE", comment: "失効日"
-    t.string "TXEMAIL", limit: 40, comment: "メールアドレス"
-    t.string "TXMENUS", limit: 30, null: false, comment: "利用可能メニュー"
-    t.string "NREMPLOYEE", limit: 5, comment: "従業員№"
-    t.index ["NREMPLOYEE"], name: "ZT020_FK1"
-  end
-
-  create_table "ZT030", primary_key: "IDNUMBER", id: :string, limit: 20, comment: "番号ＩＤ", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "TXPREFIX", limit: 4, comment: "冒頭文字"
-    t.integer "NRNUMDIGIT", limit: 2, null: false, comment: "数字桁数"
-    t.integer "NRCURRENT", comment: "番号現在値"
-    t.string "FGWITHCD", limit: 1, null: false, comment: "ＣＤ付加フラグ"
-  end
-
-  create_table "ZT040", primary_key: ["IDUSERKUBUN", "KBUSERKUBUN"], force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "IDUSERKUBUN", limit: 20, null: false, comment: "ユーザ区分ＩＤ"
-    t.string "KBUSERKUBUN", limit: 2, null: false, comment: "ユーザ区分値"
-    t.string "TXUSERKUBUN", limit: 20, null: false, comment: "区分値摘要"
-    t.integer "SQLIST", limit: 2, null: false, comment: "一覧順序"
-  end
-
-  create_table "ZT050", primary_key: "NRSESSION", id: :string, limit: 7, comment: "セッション№", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.datetime "DTLOGIN", null: false, comment: "ログイン日時"
-    t.datetime "DTLOGOUT", comment: "ログアウト日時"
-    t.string "IDUSER", limit: 5, null: false, comment: "ユーザＩＤ"
-    t.string "TXIPADDRESS", limit: 20, null: false, comment: "IPアドレス"
-    t.string "VLVERSION", limit: 10, null: false, comment: "処理系バージョン"
-    t.string "KBSESSIONSTATUS", limit: 2, comment: "終了状態コード"
-    t.index ["IDUSER"], name: "ZT050_FK1"
-  end
-
-  create_table "ZT051", primary_key: ["NRSESSION", "SQPROGRAM"], force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "NRSESSION", limit: 7, null: false, comment: "セッション№"
-    t.integer "SQPROGRAM", limit: 2, null: false, comment: "PGM行番"
-    t.string "IDMENU", limit: 2, null: false, comment: "メニュー区分"
-    t.string "IDPROGRAM", limit: 10, null: false, comment: "プログラムＩＤ"
-    t.string "TXPROGRAM", limit: 30, null: false, comment: "（プログラム名）"
-    t.datetime "DTSTART", null: false, comment: "利用開始日時"
-    t.datetime "DTEND", comment: "利用終了日時"
-    t.string "KBPROGRAMSTATUS", limit: 2, comment: "終了状態コード"
-    t.string "TXERRORLOG", limit: 300, comment: "エラーログ"
-  end
-
-  create_table "ZT060", primary_key: "DTSTART", id: :date, comment: "税率開始日", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.decimal "VLTAXRATE", precision: 3, null: false, comment: "消費税率"
-  end
-
-  create_table "ZT070", primary_key: ["KBCALENDAR", "DTOFF"], force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "KBCALENDAR", limit: 2, null: false, comment: "カレンダー区分"
-    t.date "DTOFF", null: false, comment: "休日日付"
-    t.string "TXOFF", limit: 20, comment: "摘要"
-  end
-
-  create_table "ZT080", primary_key: ["KBCURRENCY", "DTNEND"], force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "KBCURRENCY", limit: 3, null: false, comment: "通貨区分"
-    t.integer "DTNEND", limit: 2, null: false, comment: "年度"
-    t.float "VLRATEB", limit: 24, null: false, comment: "ＴＴＢレート"
-    t.float "VLRATEM", limit: 24, null: false, comment: "ＴＴＭレート"
-    t.float "VLRATES", limit: 24, null: false, comment: "ＴＴＳレート"
-  end
-
-  create_table "ZT081", primary_key: ["KBCURRENCY", "DTNEND", "DTMSEQ"], force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "KBCURRENCY", limit: 3, null: false, comment: "通貨区分"
-    t.integer "DTNEND", limit: 2, null: false, comment: "年度"
-    t.integer "DTMSEQ", limit: 2, null: false, comment: "月度"
-    t.float "VLRATEB", limit: 24, null: false, comment: "ＴＴＢレート"
-    t.float "VLRATEM", limit: 24, null: false, comment: "ＴＴＭレート"
-    t.float "VLRATES", limit: 24, null: false, comment: "ＴＴＳレート"
-  end
-
   add_foreign_key "AT011", "AT010", column: "CDBUMON", primary_key: "CDBUMON", name: "AT011_FK2"
   add_foreign_key "AT011", "AT010", column: "CDJYOUIBUMON", primary_key: "CDBUMON", name: "AT011_FK1"
   add_foreign_key "AT021", "AT010", column: "CDBUMON", primary_key: "CDBUMON", name: "AT021_FK2"
@@ -1055,9 +974,4 @@ ActiveRecord::Schema.define(version: 0) do
   add_foreign_key "YT051", "YT050", column: "NRTORIHIKISAKI", primary_key: "NRTORIHIKISAKI", name: "YT051_FK1"
 #  add_foreign_key "YT060", "YT020", column: "DTMSEQ", primary_key: "DTMSEQ", name: "YT060_FK1"
 #  add_foreign_key "YT060", "YT020", column: "DTNEND", primary_key: "DTNEND", name: "YT060_FK1"
-  add_foreign_key "ZT020", "AT020", column: "NREMPLOYEE", primary_key: "NRJYUGYOIN", name: "ZT020_FK1"
-  add_foreign_key "ZT050", "ZT020", column: "IDUSER", primary_key: "IDUSER", name: "ZT050_FK1"
-  add_foreign_key "ZT051", "ZT050", column: "NRSESSION", primary_key: "NRSESSION", name: "ZT051_FK1"
-#  add_foreign_key "ZT081", "ZT080", column: "DTNEND", primary_key: "DTNEND", name: "ZT081_FK1"
-  add_foreign_key "ZT081", "ZT080", column: "KBCURRENCY", primary_key: "KBCURRENCY", name: "ZT081_FK1"
 end
