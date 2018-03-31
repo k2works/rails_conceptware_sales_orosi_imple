@@ -68,6 +68,10 @@ rails g model order_detail --migration false
 
 ## 運用
 
+```bash
+nkf -w --overwrite CreateTables20180331161501.sql
+```
+
 ## 参照
 + [Rails - schema.rb（既存DBを使ったアプリ作成）](https://qiita.com/edo1z/items/a0bf22b294406f00ec7c)
 + [rails 既存DBを使ってrailsしてみた。](http://hmu29.hatenablog.com/entry/2014/02/14/001513)
