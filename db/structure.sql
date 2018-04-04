@@ -13,13 +13,13 @@ DROP TABLE IF EXISTS `AT010`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `AT010` (
-  `CDBUMON` varchar(5) NOT NULL COMMENT '部門C',
+  `CDBUMON` varchar(5) NOT NULL,
   `TXBUMON` varchar(30) NOT NULL COMMENT '部門名',
   `NRKANRISYA` varchar(5) NOT NULL COMMENT '管理者№',
   `TXTEKIYO` varchar(300) DEFAULT NULL COMMENT '摘要',
   `UPDCOUNTER` int(11) DEFAULT '0',
   PRIMARY KEY (`CDBUMON`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='部門C';
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `AT011`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -39,7 +39,7 @@ DROP TABLE IF EXISTS `AT020`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `AT020` (
-  `NRJYUGYOIN` varchar(5) NOT NULL COMMENT '従業員№',
+  `NRJYUGYOIN` varchar(5) NOT NULL,
   `TXKANA` varchar(20) NOT NULL COMMENT 'カナ名',
   `TXKANJI` varchar(20) NOT NULL COMMENT '漢字名',
   `KBKOYOU` varchar(5) NOT NULL COMMENT '雇用区分',
@@ -47,7 +47,7 @@ CREATE TABLE `AT020` (
   `DTTAISYA` date DEFAULT NULL COMMENT '退社日',
   `UPDCOUNTER` int(11) DEFAULT '0',
   PRIMARY KEY (`NRJYUGYOIN`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='従業員№';
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `AT021`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -66,7 +66,7 @@ DROP TABLE IF EXISTS `AT030`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `AT030` (
-  `NRTORIHIKISAKI` varchar(8) NOT NULL COMMENT '仕入先№',
+  `NRTORIHIKISAKI` varchar(8) NOT NULL,
   `TXKANA` varchar(40) NOT NULL COMMENT 'カナ名',
   `TXKANJI` varchar(40) NOT NULL COMMENT '漢字名',
   `KBCOUNTRY` varchar(3) NOT NULL COMMENT '国コード',
@@ -80,13 +80,13 @@ CREATE TABLE `AT030` (
   `UPDCOUNTER` int(11) DEFAULT '0',
   PRIMARY KEY (`NRTORIHIKISAKI`),
   UNIQUE KEY `AT030_SK1` (`TXKANJI`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='仕入先№';
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `BT010`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `BT010` (
-  `CDMAKER` varchar(5) NOT NULL COMMENT 'メーカーＣ',
+  `CDMAKER` varchar(5) NOT NULL,
   `TXMAKER` varchar(40) NOT NULL COMMENT 'メーカー名',
   `TXMAKERABR` varchar(10) NOT NULL COMMENT 'メーカー略称',
   `KBCOUNTRY` varchar(3) NOT NULL COMMENT '国コード',
@@ -98,13 +98,13 @@ CREATE TABLE `BT010` (
   `TXEMAIL` varchar(40) DEFAULT NULL COMMENT '担当者メアド',
   `UPDCOUNTER` int(11) DEFAULT '0',
   PRIMARY KEY (`CDMAKER`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='メーカーＣ';
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `BT020`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `BT020` (
-  `NRSYOHIN` varchar(7) NOT NULL COMMENT '内部商品№',
+  `NRSYOHIN` varchar(7) NOT NULL,
   `TXSYOHIN` varchar(30) NOT NULL COMMENT '商品名',
   `TXHINBAN` varchar(20) NOT NULL COMMENT '品番',
   `TXSIYOU` varchar(50) DEFAULT NULL COMMENT '仕様',
@@ -123,7 +123,7 @@ CREATE TABLE `BT020` (
   PRIMARY KEY (`NRSYOHIN`),
   UNIQUE KEY `BT020_SK1` (`TXHINBAN`),
   KEY `IndexBT020WithCDMAKER` (`CDMAKER`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='内部商品№';
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `BT021`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -143,7 +143,7 @@ DROP TABLE IF EXISTS `BT030`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `BT030` (
-  `NRSOUKO` varchar(5) NOT NULL COMMENT '倉庫№',
+  `NRSOUKO` varchar(5) NOT NULL,
   `TXSOUKO` varchar(20) NOT NULL COMMENT '倉庫名',
   `TXSOUKOENG` varchar(30) DEFAULT NULL COMMENT '倉庫名(英文)',
   `NRYUBIN` varchar(8) NOT NULL COMMENT '郵便番号',
@@ -154,7 +154,7 @@ CREATE TABLE `BT030` (
   `NRDEFAULTLOCATION` varchar(5) DEFAULT NULL,
   `UPDCOUNTER` int(11) DEFAULT '0',
   PRIMARY KEY (`NRSOUKO`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='倉庫№';
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `BT031`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -172,7 +172,7 @@ DROP TABLE IF EXISTS `CT010`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `CT010` (
-  `NRTORIHIKISAKI` varchar(8) NOT NULL COMMENT '仕入先№',
+  `NRTORIHIKISAKI` varchar(8) NOT NULL,
   `TXTANTOUBUSYO` varchar(30) NOT NULL COMMENT '仕入先担当部署',
   `TXTANTOUSYA` varchar(40) DEFAULT NULL COMMENT '仕入先担当者名',
   `TXTANTOUSYASYOKUI` varchar(10) DEFAULT NULL COMMENT '仕入先担当者職位',
@@ -188,7 +188,7 @@ CREATE TABLE `CT010` (
   `AMSIHARAI` decimal(11,2) DEFAULT '0.00' COMMENT '当期支払額',
   `UPDCOUNTER` int(11) DEFAULT '0',
   PRIMARY KEY (`NRTORIHIKISAKI`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='仕入先№';
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `CT011`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -244,7 +244,7 @@ DROP TABLE IF EXISTS `CT110`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `CT110` (
-  `NRSIHARAIIRAI` varchar(7) NOT NULL COMMENT '支払依頼№',
+  `NRSIHARAIIRAI` varchar(7) NOT NULL,
   `DTSIHARAIIRAI` date NOT NULL COMMENT '依頼日',
   `NRTORIHIKISAKI` varchar(8) NOT NULL COMMENT '仕入先№',
   `TXSEIKYUNO` varchar(20) DEFAULT NULL COMMENT '仕入先請求番号',
@@ -257,13 +257,13 @@ CREATE TABLE `CT110` (
   PRIMARY KEY (`NRSIHARAIIRAI`),
   UNIQUE KEY `CT110_SK1` (`NRTORIHIKIKANRI`),
   KEY `IndexCT110WithNRSIHARAI` (`NRSIHARAI`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='支払依頼№';
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `CT120`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `CT120` (
-  `NRSIHARAI` varchar(7) NOT NULL COMMENT '支払指示№',
+  `NRSIHARAI` varchar(7) NOT NULL,
   `DTSIHARAI` date NOT NULL COMMENT '支払日',
   `KBSIHARAIHOUHOU` varchar(2) NOT NULL COMMENT '支払方法区分',
   `KBCURRENCY` varchar(3) NOT NULL COMMENT '取引通貨',
@@ -272,13 +272,13 @@ CREATE TABLE `CT120` (
   `TXTEKIYO` varchar(300) DEFAULT NULL COMMENT '摘要',
   `UPDCOUNTER` int(11) DEFAULT '0',
   PRIMARY KEY (`NRSIHARAI`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='支払指示№';
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `DT010`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `DT010` (
-  `NRTORIHIKISAKI` varchar(8) NOT NULL COMMENT '仕入先№',
+  `NRTORIHIKISAKI` varchar(8) NOT NULL,
   `CDKAKERITSURANK` varchar(2) NOT NULL COMMENT '掛率ランクＣ',
   `TXTANTOUBUSYO` varchar(30) NOT NULL COMMENT '仕入先担当部署',
   `TXTANTOUSYA` varchar(40) DEFAULT NULL COMMENT '仕入先担当者名',
@@ -299,7 +299,7 @@ CREATE TABLE `DT010` (
   `UPDCOUNTER` int(11) DEFAULT '0',
   PRIMARY KEY (`NRTORIHIKISAKI`),
   KEY `IndexDT010WithNRTANTOUJYUGYOIN` (`NRTANTOUJYUGYOIN`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='仕入先№';
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `DT011`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -321,12 +321,12 @@ DROP TABLE IF EXISTS `DT020`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `DT020` (
-  `CDKAKERITSURANK` varchar(2) NOT NULL COMMENT '掛率ランクＣ',
+  `CDKAKERITSURANK` varchar(2) NOT NULL,
   `TXKAKERITSURANK` varchar(20) NOT NULL COMMENT 'ランク記述',
   `VLKAKERITSU` decimal(3,2) NOT NULL DEFAULT '0.00' COMMENT '掛率',
   `UPDCOUNTER` int(11) DEFAULT '0',
   PRIMARY KEY (`CDKAKERITSURANK`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='掛率ランクＣ';
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `DT100`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -364,7 +364,7 @@ DROP TABLE IF EXISTS `DT110`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `DT110` (
-  `NRSEIKYU` varchar(7) NOT NULL COMMENT '請求№',
+  `NRSEIKYU` varchar(7) NOT NULL,
   `DTSEIKYU` date NOT NULL COMMENT '請求日',
   `NRTORIHIKISAKI` varchar(8) NOT NULL COMMENT '仕入先№',
   `TXTEKIYO` varchar(300) DEFAULT NULL COMMENT '摘要',
@@ -372,7 +372,7 @@ CREATE TABLE `DT110` (
   `DTNYUKIN` date DEFAULT NULL COMMENT '入金確認日',
   `UPDCOUNTER` int(11) DEFAULT '0',
   PRIMARY KEY (`NRSEIKYU`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='請求№';
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `DT120`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -444,7 +444,7 @@ DROP TABLE IF EXISTS `ET200`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ET200` (
-  `NRTORIHIKIKANRI` varchar(7) NOT NULL COMMENT '取引管理№',
+  `NRTORIHIKIKANRI` varchar(7) NOT NULL,
   `KBYOTEI` varchar(2) NOT NULL COMMENT '受払予定区分',
   `DTYOTEI` date NOT NULL COMMENT '受払予定日',
   `NRSOUKO` varchar(5) NOT NULL COMMENT '倉庫№',
@@ -456,13 +456,13 @@ CREATE TABLE `ET200` (
   `UPDCOUNTER` int(11) DEFAULT '0',
   PRIMARY KEY (`NRTORIHIKIKANRI`),
   KEY `IndexET200WithNRSYOHIN_NRSOUKO` (`NRSYOHIN`,`NRSOUKO`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='取引管理№';
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `FT010`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `FT010` (
-  `NRHATTYU` varchar(7) NOT NULL COMMENT '発注№',
+  `NRHATTYU` varchar(7) NOT NULL,
   `DTHATTYU` date NOT NULL COMMENT '発注日',
   `NRTORIHIKISAKI` varchar(8) NOT NULL COMMENT '仕入先№',
   `NRJYUGYOIN` varchar(5) NOT NULL COMMENT '従業員№',
@@ -474,7 +474,7 @@ CREATE TABLE `FT010` (
   `DTTORIKESHI` date DEFAULT NULL COMMENT '取消日',
   `UPDCOUNTER` int(11) DEFAULT '0',
   PRIMARY KEY (`NRHATTYU`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='発注№';
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `FT011`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -518,19 +518,19 @@ DROP TABLE IF EXISTS `FT020`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `FT020` (
-  `NRNYUKA` varchar(7) NOT NULL COMMENT '入荷№',
+  `NRNYUKA` varchar(7) NOT NULL,
   `NRTORIHIKISAKI` varchar(8) NOT NULL COMMENT '仕入先№',
   `DTNYUKA` date NOT NULL COMMENT '実際入荷日',
   `NRSOUKO` varchar(5) NOT NULL COMMENT '倉庫№',
   `UPDCOUNTER` int(11) DEFAULT '0',
   PRIMARY KEY (`NRNYUKA`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='入荷№';
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `GT010`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `GT010` (
-  `NRJYUTYU` varchar(7) NOT NULL COMMENT '受注№',
+  `NRJYUTYU` varchar(7) NOT NULL,
   `DTJYUTYU` date NOT NULL COMMENT '受注日',
   `NRTORIHIKISAKI` varchar(8) NOT NULL COMMENT '仕入先№',
   `SQSYUKKASAKI` smallint(6) NOT NULL DEFAULT '0' COMMENT '出荷先行',
@@ -543,7 +543,7 @@ CREATE TABLE `GT010` (
   `UPDCOUNTER` int(11) DEFAULT '0',
   PRIMARY KEY (`NRJYUTYU`),
   KEY `IndexGT010WithNRMITSUMORI_SQVERSION` (`NRMITSUMORI`,`SQVERSION`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='受注№';
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `GT011`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -588,7 +588,7 @@ DROP TABLE IF EXISTS `GT020`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `GT020` (
-  `NRSYUKKA` varchar(7) NOT NULL COMMENT '出荷№',
+  `NRSYUKKA` varchar(7) NOT NULL,
   `NRTORIHIKISAKI` varchar(8) NOT NULL COMMENT '仕入先№',
   `SQSYUKKASAKI` smallint(6) NOT NULL DEFAULT '0' COMMENT '出荷先行',
   `NRSOUKO` varchar(5) NOT NULL COMMENT '倉庫№',
@@ -599,7 +599,7 @@ CREATE TABLE `GT020` (
   `TMKANRYO` datetime DEFAULT NULL COMMENT '完了日時',
   `UPDCOUNTER` int(11) DEFAULT '0',
   PRIMARY KEY (`NRSYUKKA`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='出荷№';
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `GT030`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -716,7 +716,7 @@ DROP TABLE IF EXISTS `KT010`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `KT010` (
-  `NRTANAOROSHI` varchar(7) NOT NULL COMMENT '棚卸№',
+  `NRTANAOROSHI` varchar(7) NOT NULL,
   `NRSOUKO` varchar(5) NOT NULL COMMENT '倉庫№',
   `NRLOCATION` varchar(5) DEFAULT NULL COMMENT 'ロケ№',
   `DTKIJYUN` datetime DEFAULT NULL COMMENT '調査基準日時',
@@ -726,7 +726,7 @@ CREATE TABLE `KT010` (
   `UPDCOUNTER` int(11) DEFAULT '0',
   PRIMARY KEY (`NRTANAOROSHI`),
   UNIQUE KEY `KT010_SK1` (`NRTORIHIKIKANRI`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='棚卸№';
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `KT011`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -746,7 +746,7 @@ DROP TABLE IF EXISTS `KT020`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `KT020` (
-  `NRZAIKOIDOU` varchar(7) NOT NULL COMMENT '移動指示№',
+  `NRZAIKOIDOU` varchar(7) NOT NULL,
   `DTSHIJI` date NOT NULL COMMENT '指示日',
   `NRSOUKOFROM` varchar(5) NOT NULL COMMENT '元倉庫№',
   `NRSOUKOTO` varchar(5) NOT NULL COMMENT '先倉庫№',
@@ -758,7 +758,7 @@ CREATE TABLE `KT020` (
   `UPDCOUNTER` int(11) DEFAULT '0',
   PRIMARY KEY (`NRZAIKOIDOU`),
   UNIQUE KEY `KT020_SK1` (`NRTORIHIKIKANRI`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='移動指示№';
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `KT021`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -803,7 +803,7 @@ DROP TABLE IF EXISTS `LT010`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `LT010` (
-  `NRSET` varchar(7) NOT NULL COMMENT 'セット指示№',
+  `NRSET` varchar(7) NOT NULL,
   `NRSOUKO` varchar(5) NOT NULL COMMENT '倉庫№',
   `DTYOTEI` date NOT NULL COMMENT '受払予定日',
   `TMHAKKOU` datetime DEFAULT NULL COMMENT '発行日時',
@@ -819,7 +819,7 @@ CREATE TABLE `LT010` (
   `UPDCOUNTER` int(11) DEFAULT '0',
   PRIMARY KEY (`NRSET`),
   UNIQUE KEY `LT010_SK1` (`NRTORIHIKIKANRI`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='セット指示№';
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `LT011`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -843,7 +843,7 @@ DROP TABLE IF EXISTS `YT010`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `YT010` (
-  `DTNEND` smallint(6) NOT NULL DEFAULT '0' COMMENT '取引年度',
+  `DTNEND` smallint(6) NOT NULL DEFAULT '0',
   `AMURIKISYUZAN` bigint(20) DEFAULT '0' COMMENT '期首売掛残高',
   `AMURISYUK` bigint(20) DEFAULT '0' COMMENT '期間出荷売上額',
   `AMURITYOK` bigint(20) DEFAULT '0' COMMENT '期間直出荷売上',
@@ -883,7 +883,7 @@ CREATE TABLE `YT010` (
   `AMZAIZOUGEN` bigint(20) DEFAULT '0' COMMENT '期間棚増減額',
   `UPDCOUNTER` int(11) DEFAULT '0',
   PRIMARY KEY (`DTNEND`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='取引年度';
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `YT020`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -1115,154 +1115,6 @@ CREATE TABLE `YT060` (
   `AMURITAX` int(11) DEFAULT '0' COMMENT '期間売上消費税',
   `UPDCOUNTER` int(11) DEFAULT '0',
   PRIMARY KEY (`DTNEND`,`DTMSEQ`,`NRTANTOUJYUGYOIN`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-DROP TABLE IF EXISTS `ZT010`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `ZT010` (
-  `IDVARIANT` varchar(20) NOT NULL,
-  `TXNAME` varchar(10) NOT NULL COMMENT '変数名',
-  `TXTYPE` varchar(10) NOT NULL COMMENT '変数値タイプ',
-  `TXVALUE` varchar(100) NOT NULL COMMENT '変数値',
-  `TXREMARKS` varchar(500) DEFAULT NULL COMMENT '摘要',
-  `UPDCOUNTER` int(11) DEFAULT '0',
-  PRIMARY KEY (`IDVARIANT`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-DROP TABLE IF EXISTS `ZT020`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `ZT020` (
-  `IDUSER` varchar(5) NOT NULL COMMENT 'ユーザＩＤ',
-  `TXNAME` varchar(30) NOT NULL COMMENT '変数名',
-  `TXPASSWORD` varchar(50) NOT NULL COMMENT 'パスワード',
-  `DTVALID` date NOT NULL COMMENT '発効日',
-  `DTEXPIRE` date NOT NULL COMMENT '失効日',
-  `TXEMAIL` varchar(40) DEFAULT NULL COMMENT '担当者メアド',
-  `TXMENUS` varchar(30) NOT NULL COMMENT '利用可能メニュー',
-  `NREMPLOYEE` varchar(5) DEFAULT NULL COMMENT '従業員№',
-  `UPDCOUNTER` int(11) DEFAULT '0',
-  PRIMARY KEY (`IDUSER`),
-  KEY `IndexZT020WithNREMPLOYEE` (`NREMPLOYEE`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-DROP TABLE IF EXISTS `ZT021`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `ZT021` (
-  `IDUSER` varchar(5) NOT NULL COMMENT 'ユーザＩＤ',
-  `IDFUNCTION` varchar(20) NOT NULL,
-  `IDFILTER` varchar(40) NOT NULL,
-  `TXVALUE` varchar(50) DEFAULT NULL COMMENT '変数値',
-  `UPDCOUNTER` int(11) DEFAULT '0',
-  PRIMARY KEY (`IDUSER`,`IDFUNCTION`,`IDFILTER`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-DROP TABLE IF EXISTS `ZT030`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `ZT030` (
-  `IDNUMBER` varchar(20) NOT NULL,
-  `TXPREFIX` varchar(4) DEFAULT NULL COMMENT '冒頭文字',
-  `NRNUMDIGIT` smallint(6) NOT NULL DEFAULT '0' COMMENT '数字桁数',
-  `NRCURRENT` int(11) NOT NULL DEFAULT '0' COMMENT '番号現在値',
-  `FGWITHCD` varchar(1) NOT NULL COMMENT 'ＣＤ付加フラグ',
-  `UPDCOUNTER` int(11) DEFAULT '0',
-  PRIMARY KEY (`IDNUMBER`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-DROP TABLE IF EXISTS `ZT040`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `ZT040` (
-  `IDUSERKUBUN` varchar(20) NOT NULL COMMENT 'ユーザ区分ＩＤ',
-  `KBUSERKUBUN` varchar(5) NOT NULL COMMENT 'ユーザ区分値',
-  `TXUSERKUBUN` varchar(20) NOT NULL COMMENT '区分値摘要',
-  `SQLIST` varchar(2) NOT NULL COMMENT '構成一覧順',
-  `UPDCOUNTER` int(11) DEFAULT '0',
-  PRIMARY KEY (`IDUSERKUBUN`,`KBUSERKUBUN`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-DROP TABLE IF EXISTS `ZT050`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `ZT050` (
-  `NRSESSION` varchar(7) NOT NULL COMMENT 'セッション№',
-  `DTLOGIN` datetime NOT NULL COMMENT 'ログイン日時',
-  `DTLOGOUT` datetime DEFAULT NULL COMMENT 'ログアウト日時',
-  `IDUSER` varchar(5) NOT NULL COMMENT 'ユーザＩＤ',
-  `TXIPADDRESS` varchar(20) NOT NULL COMMENT 'IPアドレス',
-  `VLVERSION` varchar(10) NOT NULL COMMENT '処理系バージョン',
-  `KBSESSIONSTATUS` varchar(3) NOT NULL COMMENT '終了状態コード',
-  `UPDCOUNTER` int(11) DEFAULT '0',
-  PRIMARY KEY (`NRSESSION`),
-  KEY `IndexZT050WithIDUSER` (`IDUSER`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-DROP TABLE IF EXISTS `ZT051`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `ZT051` (
-  `NRSESSION` varchar(7) NOT NULL COMMENT 'セッション№',
-  `SQPROGRAM` smallint(6) NOT NULL DEFAULT '0' COMMENT 'PGM行番',
-  `IDMENU` varchar(2) NOT NULL COMMENT 'メニュー区分',
-  `IDPROGRAM` varchar(10) NOT NULL COMMENT 'プログラムＩＤ',
-  `TXPROGRAM` varchar(30) NOT NULL COMMENT '（プログラム名）',
-  `DTSTART` datetime NOT NULL COMMENT '利用開始日時',
-  `DTEND` datetime DEFAULT NULL COMMENT '利用終了日時',
-  `KBPROGRAMSTATUS` varchar(2) DEFAULT NULL COMMENT '終了状態コード',
-  `TXERRORLOG` longtext COMMENT 'エラーログ',
-  `UPDCOUNTER` int(11) DEFAULT '0',
-  PRIMARY KEY (`NRSESSION`,`SQPROGRAM`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-DROP TABLE IF EXISTS `ZT060`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `ZT060` (
-  `DTSTART` date NOT NULL COMMENT '利用開始日時',
-  `VLTAXRATE` decimal(3,2) NOT NULL DEFAULT '0.00' COMMENT '消費税率',
-  `UPDCOUNTER` int(11) DEFAULT '0',
-  PRIMARY KEY (`DTSTART`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-DROP TABLE IF EXISTS `ZT070`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `ZT070` (
-  `KBCALENDAR` varchar(2) NOT NULL COMMENT 'カレンダー区分',
-  `DTOFF` date NOT NULL COMMENT '休日日付',
-  `TXOFF` varchar(20) DEFAULT NULL COMMENT '摘要',
-  `UPDCOUNTER` int(11) DEFAULT '0',
-  PRIMARY KEY (`KBCALENDAR`,`DTOFF`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-DROP TABLE IF EXISTS `ZT080`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `ZT080` (
-  `KBCURRENCY` varchar(3) NOT NULL COMMENT '取引通貨',
-  `DTNEND` smallint(6) NOT NULL DEFAULT '0' COMMENT '取引年度',
-  `VLRATEB` decimal(10,3) NOT NULL DEFAULT '0.000' COMMENT 'ＴＴＢレート',
-  `VLRATEM` decimal(10,3) NOT NULL DEFAULT '0.000' COMMENT 'ＴＴＭレート',
-  `VLRATES` decimal(10,3) NOT NULL DEFAULT '0.000' COMMENT 'ＴＴＳレート',
-  `UPDCOUNTER` int(11) DEFAULT '0',
-  PRIMARY KEY (`KBCURRENCY`,`DTNEND`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-DROP TABLE IF EXISTS `ZT081`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `ZT081` (
-  `KBCURRENCY` varchar(3) NOT NULL COMMENT '取引通貨',
-  `DTNEND` smallint(6) NOT NULL DEFAULT '0' COMMENT '取引年度',
-  `DTMSEQ` smallint(6) NOT NULL DEFAULT '0' COMMENT '取引月序',
-  `VLRATEB` decimal(10,3) NOT NULL DEFAULT '0.000' COMMENT 'ＴＴＢレート',
-  `VLRATEM` decimal(10,3) NOT NULL DEFAULT '0.000' COMMENT 'ＴＴＭレート',
-  `VLRATES` decimal(10,3) NOT NULL DEFAULT '0.000' COMMENT 'ＴＴＳレート',
-  `UPDCOUNTER` int(11) DEFAULT '0',
-  PRIMARY KEY (`KBCURRENCY`,`DTNEND`,`DTMSEQ`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `ar_internal_metadata`;
